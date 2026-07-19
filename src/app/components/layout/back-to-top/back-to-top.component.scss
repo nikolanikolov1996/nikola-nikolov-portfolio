@@ -1,0 +1,74 @@
+/* Floating shortcut button that appears once you scroll */
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  background: rgba(5, 8, 22, 0.72);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transform: translateY(16px) scale(0.95);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  z-index: 20;
+}
+
+.back-to-top:hover {
+  border-color: rgba(34, 211, 238, 0.32);
+  background: rgba(34, 211, 238, 0.08);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-nav,
+  .hero__copy,
+  .hero__avatar,
+  .projects,
+  .about,
+  .contact,
+  .site-footer {
+    animation: none;
+  }
+
+  .button,
+  .contact__icon-link,
+  .site-nav__links a,
+  .project-card,
+  .about-card,
+  .experience-list li,
+  .back-to-top {
+    transition: none;
+  }
+
+  body::before,
+  body::after {
+    animation: none;
+  }
+
+  .intro-splash__card {
+    animation: none;
+  }
+
+  .intro-splash__mark-wrap,
+  .intro-splash__orbit,
+  .intro-splash__dots span {
+    animation: none;
+  }
+}

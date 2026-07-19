@@ -1,0 +1,188 @@
+/* Intro splash: a short branded overlay that fades out after the app loads */
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at top, rgba(124, 58, 237, 0.18), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.14), transparent 26%),
+    rgba(5, 8, 22, 0.96);
+  backdrop-filter: blur(18px);
+  z-index: 200;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: none;
+  animation: splashAutoHide 1.2s ease 0s forwards;
+}
+
+.intro-splash__mark-wrap {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  display: grid;
+  place-items: center;
+  animation: splashLift 1.2s ease-in-out infinite;
+}
+
+.intro-splash__card {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 34px 38px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(15, 23, 42, 0.6);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+  animation: splashPulse 1.8s ease-in-out infinite;
+}
+
+.intro-splash__mark {
+  width: 96px;
+  height: 96px;
+  border-radius: 28px;
+  display: block;
+  object-fit: contain;
+  padding: 10px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.14), rgba(124, 58, 237, 0.18));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 2;
+}
+
+.intro-splash__orbit {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  border: 1px solid rgba(34, 211, 238, 0.22);
+  box-shadow: 0 0 28px rgba(34, 211, 238, 0.08);
+  pointer-events: none;
+}
+
+.intro-splash__orbit--outer {
+  inset: -9px;
+  border-color: rgba(124, 58, 237, 0.24);
+  animation: splashSpin 3.6s linear infinite;
+}
+
+.intro-splash__orbit--inner {
+  inset: 8px;
+  border-color: rgba(34, 211, 238, 0.18);
+  animation: splashSpinReverse 2.8s linear infinite;
+}
+
+.intro-splash__name {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.intro-splash__text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.intro-splash__dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.intro-splash__dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+  animation: splashDot 1s ease-in-out infinite;
+}
+
+.intro-splash__dots span:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+.intro-splash__dots span:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+@keyframes splashPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-3px) scale(1.02);
+  }
+}
+
+@keyframes splashLift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes splashSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes splashSpinReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes splashDot {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+
+  50% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes splashAutoHide {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1);
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.02);
+    visibility: hidden;
+  }
+}
+
