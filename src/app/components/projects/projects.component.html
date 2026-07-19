@@ -1,0 +1,33 @@
+<section class="projects" id="projects" data-reveal>
+  <div class="section-heading">
+    <p class="eyebrow">Selected Work</p>
+    <h2>Projects</h2>
+  </div>
+  <div class="projects__grid">
+    @for (project of projects; track project.id) {
+      <article
+        class="project-card project-card--clickable"
+        data-reveal
+        role="button"
+        tabindex="0"
+        (click)="openProject(project)"
+        (keydown)="onProjectKeydown($event, project)"
+        [attr.aria-label]="'Open details for ' + project.title"
+      >
+        <p class="project-card__tag">{{ project.period }}</p>
+        <h3>{{ project.title }}</h3>
+        <div class="project-card__chips" [attr.aria-label]="project.title + ' technologies'">
+          @for (chip of project.chips; track chip) {
+            <span class="tech-chip tech-chip--small">{{ chip }}</span>
+          }
+        </div>
+        <p>{{ project.summary }}</p>
+        <span class="project-card__cta">View details</span>
+      </article>
+    }
+  </div>
+</section>
+
+@if (selectedProject) {
+  <app-project-modal [project]="selectedProject" (dismissed)="closeProject()" />
+}

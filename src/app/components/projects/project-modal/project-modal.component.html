@@ -1,0 +1,50 @@
+<div class="project-modal-backdrop" (click)="dismissed.emit()">
+  <div
+    class="project-modal"
+    role="dialog"
+    aria-modal="true"
+    [attr.aria-label]="project().title + ' details'"
+    (click)="$event.stopPropagation()"
+  >
+    <button
+      class="project-modal__close"
+      type="button"
+      (click)="dismissed.emit()"
+      aria-label="Close project details"
+      title="Close"
+    >
+      ×
+    </button>
+    <div class="project-modal__content">
+      <p class="project-modal__tag">{{ project().period }}</p>
+      <h3>{{ project().title }}</h3>
+      <p class="project-modal__summary">{{ project().details }}</p>
+      <div class="project-modal__section">
+        <p class="project-modal__label">Highlights</p>
+        <ul class="project-modal__list">
+          @for (item of project().highlights; track item) {
+            <li>{{ item }}</li>
+          }
+        </ul>
+      </div>
+      <div class="project-modal__section">
+        <p class="project-modal__label">Stack</p>
+        <div class="project-modal__chips" [attr.aria-label]="project().title + ' stack'">
+          @for (tech of project().technologies; track tech) {
+            <span class="tech-chip tech-chip--small">{{ tech }}</span>
+          }
+        </div>
+      </div>
+      @if (project().websiteUrl) {
+        <a
+          class="project-modal__website"
+          [href]="project().websiteUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Visit {{ project().title }} <span aria-hidden="true">↗</span>
+        </a>
+      }
+    </div>
+  </div>
+</div>

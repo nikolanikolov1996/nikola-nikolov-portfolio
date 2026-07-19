@@ -1,0 +1,23 @@
+<header class="site-nav" data-reveal>
+  <a class="site-nav__brand" href="#top">Nikola Nikolov</a>
+  <nav class="site-nav__links" aria-label="Primary">
+    <a
+      href="#projects"
+      [class.is-active]="activeSection() === 'projects'"
+      [attr.aria-current]="activeSection() === 'projects' ? 'location' : null"
+      >Projects</a
+    >
+    <a
+      href="#about"
+      [class.is-active]="activeSection() === 'about'"
+      [attr.aria-current]="activeSection() === 'about' ? 'location' : null"
+      >About</a
+    >
+    <a
+      href="#contact"
+      [class.is-active]="activeSection() === 'contact'"
+      [attr.aria-current]="activeSection() === 'contact' ? 'location' : null"
+      >Contact</a
+    >
+  </nav>
+</header>

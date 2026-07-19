@@ -1,0 +1,11 @@
+<main class="page">
+  <app-scroll-progress [progress]="scrollProgress" />
+  <app-intro-splash />
+  <app-site-nav [activeSection]="activeSection" />
+  <app-hero />
+  <app-projects />
+  <app-about />
+  <app-contact />
+  <app-back-to-top [visible]="showBackToTop" (navigateTop)="scrollToTop()" />
+  <app-site-footer />
+</main>
